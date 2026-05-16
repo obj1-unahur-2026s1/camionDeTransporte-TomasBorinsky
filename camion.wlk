@@ -1,3 +1,4 @@
+import cosas.*
 object camion {
     const property carga = []
 
@@ -45,7 +46,12 @@ object camion {
         return self.seExcedioElPeso() and self.algunoSuperaAlNivel(unNivel) 
     }
 
+    method tieneUnaCosaEntre_Y_(unPeso, otroPeso){
+        return carga.any({c=>c.peso()>unPeso and c.peso()<otroPeso})
+    }
 
-
+    method laMasPesada(){
+        return carga.max({c => c.nivel()})
+    }
 
 }
